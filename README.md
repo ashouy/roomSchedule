@@ -19,7 +19,7 @@ There are two main motivation for this project.
 - ### REST
 - ### DDD
 - ### Modular Monolith pattern
-- ### <a href="https://spring.o/projects/spring-modulith">Spring Modulith</a> to ensure software modularity and DDD
+- ### <a href="https://spring.io/projects/spring-modulith">Spring Modulith</a> to ensure software modularity and DDD
 - ### TDD
 - ### Docker
 - ### And more good development practices ...
