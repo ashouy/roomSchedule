@@ -1,5 +1,4 @@
-# Room Schedule - Manage rooms booking
-
+# Room Schedule - Manage rooms booking 	📅🕑
 Its is a software to manage my company office rooms bookings. 
 
 
@@ -15,14 +14,14 @@ There are two main motivation for this project.
 
 ## Main Tecnologies and Methods
 
-- ### Spring Boot | JAVA 21
-- ### REST
-- ### DDD
-- ### Modular Monolith pattern
-- ### <a href="https://spring.io/projects/spring-modulith">Spring Modulith</a> to ensure software modularity and DDD
-- ### TDD
-- ### Docker
-- ### And more good development practices ...
+-  **Spring Boot | JAVA 21**
+-  **REST**
+-  **DDD**
+-  **Modular Monolith pattern**
+-  **<a href="https://spring.io/projects/spring-modulith">Spring Modulith</a> to ensure software modularity and DDD**
+-  **TDD**
+-  **Docker**
+-  **And more good development practices ...**
 
 ---
 
@@ -32,7 +31,7 @@ Below we can see the use cases and relations between classes. There are 3 module
 _**User**_, _**Room**_ and _**Reservation**_. Each module going to be implemented using _**DDD**_ pattern,
 securing that each one can be work independently.
 
-<p style="color : Red">The Diagram and classes can change over the time!</p>
+$${\color{red}The \space Diagram \space \space and \space classes \space can \space change \space over \space the \space time!}$$
 
 > - 1 Use Case Diagram 
 >
