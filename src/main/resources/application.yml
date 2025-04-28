@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: room-schedule
+
+  #postegresDb
+  datasource:
+    url: jdbc:postgresql://localhost:5432/room-schedule
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  #hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  modulith:
+    events:
+      jdbc-schema-initialization:
+        enabled: false
