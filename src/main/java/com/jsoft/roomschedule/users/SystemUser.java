@@ -3,11 +3,11 @@ package com.jsoft.roomschedule.users;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "system_user")
+public class SystemUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "system_user_seq")
+    @SequenceGenerator(name = "system_user_seq", sequenceName = "system_user_seq")
     private Long id;
     private String login;
     private String password;
@@ -15,10 +15,10 @@ public class User {
     @OneToOne
     private Profile profile;
 
-    public User() {
+    public SystemUser() {
     }
 
-    public User(Long id, String login, String password, String email, Profile profile) {
+    public SystemUser(Long id, String login, String password, String email, Profile profile) {
         this.id = id;
         this.login = login;
         this.password = password;
