@@ -12,16 +12,16 @@ public class Person {
     private String name;
     private String documenyIdentification;
     @OneToOne
-    private User user;
+    private SystemUser systemUser;
 
     public Person() {
     }
 
-    public Person(Long id, String name, String documenyIdentification, User user) {
+    public Person(Long id, String name, String documenyIdentification, SystemUser systemUser) {
         this.id = id;
         this.name = name;
         this.documenyIdentification = documenyIdentification;
-        this.user = user;
+        this.systemUser = systemUser;
     }
 
     public Long getId() {
@@ -48,11 +48,11 @@ public class Person {
         this.documenyIdentification = documenyIdentification;
     }
 
-    public User getUser() {
-        return user;
+    public SystemUser getUser() {
+        return systemUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(SystemUser systemUser) {
+        this.systemUser = systemUser;
     }
 }
