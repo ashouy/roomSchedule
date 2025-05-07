@@ -1,32 +1,42 @@
 package com.jsoft.roomschedule.room;
 
 import com.jsoft.roomschedule.rooms.RoomController;
+import com.jsoft.roomschedule.rooms.RoomService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.context.WebApplicationContext;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+@WebMvcTest(RoomController.class)
 public class RoomControllerTest {
-    @Autowired
-    private RoomController roomController;
 
-    @LocalServerPort
-    private int port;
+    @MockitoBean
+    private RoomService roomService ;
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private MockMvc mockMvc;
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
 
     @Test
-    public void contextLoads() throws Exception {
-        assertThat(roomController).isNotNull();
+    void shouldCreateMvc() {
+        assertNotNull(mockMvc);
     }
+
     @Test
-    void greetingShouldReturnDefaultMessage() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:"+port+"/api/v1/rooms/test",
-                String.class)).contains("Hello World");
+    void shouldReturnGreenting() throws Exception {
+        this.mockMvc
+                .perform(MockMvcRequestBuilders.get("/api/v1/rooms/test"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Hello World"))
+        ;
     }
 }
