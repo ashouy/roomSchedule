@@ -9,15 +9,15 @@ public class Permission {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "permission_seq")
     @SequenceGenerator(name = "permission_seq", sequenceName = "permission_seq")
     private Long id;
-    @Column(unique = true)
-    private String key;
+    @Enumerated(EnumType.STRING)
+    private RoleName key;
     private String description;
     private String label;
 
     public Permission() {
     }
 
-    public Permission(Long id, String key, String description, String label) {
+    public Permission(Long id, RoleName key, String description, String label) {
         this.id = id;
         this.key = key;
         this.description = description;
@@ -32,11 +32,11 @@ public class Permission {
         this.id = id;
     }
 
-    public String getKey() {
+    public RoleName getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(RoleName key) {
         this.key = key;
     }
 

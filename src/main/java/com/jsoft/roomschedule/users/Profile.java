@@ -54,7 +54,7 @@ public class Profile {
         this.description = description;
     }
 
-    public List<Permission> getPermission() {
+    public List<Permission> getPermissions() {
         return permission;
     }
 
