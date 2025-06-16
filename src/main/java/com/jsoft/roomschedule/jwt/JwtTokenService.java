@@ -1,10 +1,10 @@
-package com.jsoft.roomschedule.config.jwt;
+package com.jsoft.roomschedule.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.jsoft.roomschedule.users.auth.UserDetailsImpl;
+import com.jsoft.roomschedule.auth.UserDetailsImpl;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -13,6 +13,10 @@ import java.time.ZonedDateTime;
 
 @Service
 public class JwtTokenService {
+
+    public JwtTokenService() {
+    }
+    //todo put in configs
     private static final String SECRET_KEY = "4Z^XrroxR@dWxqf$mTTKwW$!@#qGr4P"; // Chave secreta utilizada para gerar e verificar o token
     private static final String ISSUER = "room-sched-api"; // Emissor do token
     private final long EXPIRATION_INTERVAL = 4;
@@ -43,6 +47,7 @@ public class JwtTokenService {
             throw new JWTVerificationException("Token inválido ou expirado.");
         }
     }
+    //todo put zonetime in configs
     private Instant creationDate() {
         return ZonedDateTime.now(ZoneId.of("America/Recife")).toInstant();
     }

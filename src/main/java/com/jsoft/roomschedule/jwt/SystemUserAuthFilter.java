@@ -1,8 +1,8 @@
-package com.jsoft.roomschedule.config.jwt;
+package com.jsoft.roomschedule.jwt;
 
 import com.jsoft.roomschedule.users.SystemUser;
 import com.jsoft.roomschedule.users.UserService;
-import com.jsoft.roomschedule.users.auth.UserDetailsImpl;
+import com.jsoft.roomschedule.auth.UserDetailsImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,10 +21,16 @@ import java.util.Optional;
 @Component
 public class SystemUserAuthFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private JwtTokenService jwtTokenService;
-    @Autowired
-    private UserService userService;
+
+    private final JwtTokenService jwtTokenService;
+
+    private final UserService userService;
+
+    public SystemUserAuthFilter(JwtTokenService jwtTokenService, UserService userService) {
+        this.jwtTokenService = jwtTokenService;
+        this.userService = userService;
+    }
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -57,6 +63,7 @@ public class SystemUserAuthFilter extends OncePerRequestFilter {
 
     private boolean isNotPublicEndPoint(HttpServletRequest request) {
         String requestUri = request.getRequestURI();
-        return !Arrays.stream(SecurityConfiguration.ENDPOINTS_WITH_AUTH_NOT_REQUIRED).anyMatch( publicRoute -> publicRoute.contains(requestUri));
+        return !Arrays.stream(SecurityConfiguration.ENDPOINTS_WITH_AUTH_NOT_REQUIRED).anyMatch(endPoint ->
+                requestUri.contains(endPoint.replace("*","")));
     }
 }

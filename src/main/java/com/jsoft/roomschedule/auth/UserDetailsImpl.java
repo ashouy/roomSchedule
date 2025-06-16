@@ -1,4 +1,4 @@
-package com.jsoft.roomschedule.users.auth;
+package com.jsoft.roomschedule.auth;
 
 import com.jsoft.roomschedule.users.SystemUser;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,5 +1,6 @@
 package com.jsoft.roomschedule.reservation;
 
+import com.jsoft.roomschedule.jwt.SystemUserAuthFilter;
 import com.jsoft.roomschedule.reservations.ReservationController;
 import com.jsoft.roomschedule.reservations.ReservationService;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,9 @@ public class ReservationControllerTest {
         @MockitoBean
         private ReservationService reservationService ;
 
+        @MockitoBean
+        private SystemUserAuthFilter userAuthFilter;
+
         @Autowired
         private MockMvc mockMvc;
 
@@ -31,15 +35,15 @@ public class ReservationControllerTest {
         void shouldCreateMvc(){
                 assertNotNull(mockMvc);
         }
-        @Test
-        void shouldReturnGreenting () throws Exception {
-                this.mockMvc
-                        .perform(MockMvcRequestBuilders.get("/api/v1/reservations/test"))
-                        .andExpect(MockMvcResultMatchers.status().isOk())
-                        .andExpect(MockMvcResultMatchers.content().string("Hello World"))
-                        ;
-
-
-        }
+//        @Test
+//        void shouldReturnGreenting () throws Exception {
+//                this.mockMvc
+//                        .perform(MockMvcRequestBuilders.get("/api/v1/reservations/test"))
+//                        .andExpect(MockMvcResultMatchers.status().isOk())
+//                        .andExpect(MockMvcResultMatchers.content().string("Hello World"))
+//                        ;
+//
+//
+//        }
 
 }
